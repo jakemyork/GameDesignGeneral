@@ -1,0 +1,191 @@
+\documentclass[journal]{IEEEtran}
+%\documentclass[conference]{IEEEtran}
+%\documentclass[conference,compsoc]{IEEEtran}
+%\documentclass{aiaa-pretty}
+%\documentclass{report}
+%\documentclass[10pt,conference,a4paper]{IEEEtran}
+
+\usepackage[ampersand]{easylist}
+\usepackage{mathtools}
+\usepackage{scrextend}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{listings}
+\usepackage{color}
+\usepackage{algorithm2e} %for pseudo code
+\usepackage{textcomp}
+\usepackage{hyperref}
+%\usepackage{graphicx}
+%\usepackage{draftwatermark}
+%\SetWatermarkLightness{0.75}
+%\SetWatermarkScale{.5}
+\hypersetup{colorlinks=true, urlcolor=blue}
+\setlength{\textfloatsep}{10pt}
+\begin{document}
+
+\title{Game Design Document - PED15}
+{}
+\maketitle
+
+\section{Story and Overview}
+\subsection{Background}
+The story of PED15 takes place some time in the future, after humans have caused massive environmental devastation that threatens all life on Earth. By this time, the majority of the human race has left the planet (similar to the film, Wall-E), and all that is left is a sub-race, the `Junkers', and a number of automated robotic lifeforms, `Automatons'. The latter are largely impervious to the environmental changes. There is a conflict between the two groups, as the Junkers seek to harvest the Automatons for parts (similar to the theme in the Mad Max films). The Automatons, as non-violent beings, simply try to avoid being harvested. In this dystopian future, Automatons that have received extensive damage to particular components can replace these with repair parts, and even replace their entire body by transplanting their CPU/HDD to a different Automaton body.
+\subsubsection{Basic Storyline}
+The game story follows a single Automaton, PED15, after an encounter with a group of Junkers along the road. PED15 escapes into a nearby forest and then after wandering for a short while, happens upon a small town. PED15 explores the town, meeting other Automatons and more Junkers (it is not clear or relevant if these are the same as the initial encounter). Through a series of obstacles, PED15 is required to harvest parts to keep itself fully functional. At a point in the game, PED15 is required to conduct a body transplant with another Automaton, SEC17, after extensive damage to its torso (where part replacement is not possible). PED15 eventually escapes the town as SEC17.
+\linebreak\linebreak
+Note: there will be multiple possible starting and finishing characters for different player run-throughs. Their differences are described in section II. However, for reference in this design document, the names PED15 and SEC17 will be used.
+\subsection{Basic Game Details}
+\subsubsection{Genre}
+This is an action/puzzle game, with a ratio of about 1:3 action to puzzle.
+\subsubsection{Perspective}
+The game will be played from a 3d-limited perspective (similar to the limits on games such as Crash Bandicoot, but played from left to right with limited depth forward and back).
+\subsubsection{Target Demographic}
+The game is targeted at players between the ages of 18 and 40 years old, with North American/Australasian/European backgrounds. The aim is to not only target players who enjoy action/puzzle games, but particularly to target players that enjoy single-player, story driven adventure games such as INSIDE or Deadlight.
+\subsection{Plot Points}
+As a note, each of the below plot points also represents an autosave point for the game. If the player `dies' at any point, the game will revert to the previous autosave.
+\subsubsection{Background explanation}
+The game begins with a short explanation of the game world via a cutscene. This explanation shows industry, the destruction of the environment, the majority of the human population leaving Earth and the rise of the Junkers. It also shows Automatons attempting to exist peacefully and then concentrates on PED15. The cutscene ends with PED15 walking alone along a country road.
+\subsubsection{First Junker Encounter}
+The player has a brief opportunity to control PED15 before being ambushed by a pair of Junkers in a brief cutscene. Before the encounter, the player is given some basic tips on how to move PED15. When the Junkers ambush PED15, it is knocked to the ground. After another set of basic controls tips, the player regains control of PED15 and is encouraged to escape into a nearby forest. If PED15 does not escape quickly enough, the Junkers will overpower it and PED15 will `die'. If this occurs, the encounter will restart after showing the player the most recent set of tips.
+\linebreak\linebreak
+The successful ending to the encounter is PED15 escaping into a nearby forest, falling down an embankment and finding itself to be alone (the Junkers did not follow). This sequence occurs in a small cutscene. Once this occurs, there will be no further access to the road area.
+\subsubsection{Forest Exploration}
+The forest exploration section of the game allows the player to understand the different actions that PED15 can do. This will include:
+\begin{itemize}
+	\item jumping across a gap,
+	\item climbing over a section of rock,
+	\item crawling under a fallen tree trunk (both crouched and prone),
+	\item pushing a boulder out of the way,
+	\item running and walking.
+\end{itemize}
+The main reason PED15 progresses through the forest is because there is nothing to be gained from going backwards. While in the forest, there will be atmospheric fog that will obscure what the player can see, limiting reaction time to particular events. During the exploration of the forest, it will become clear to the player that the Junkers have followed PED15 as they try to grab it through fallen branches and give chase at certain points. PED15 will eventually find itself at a cliff. Here, a crane hangs out over a ravine in the direction of a small town a short distance below. The town itself will be displayed in a brief cutscene for the player to see what lies ahead conceptually. The player will have no choice but to climb the crane and jump from the edge of the arm towards the town. Once PED15 jumps from the crane, the player will no longer be able to access the forest area.
+\subsubsection{First Damage Encounter}
+There will be a short cutscene as PED15 drops from the crane to the ground below. PED15 will crumple on landing and then stand up shortly after. Here, the player regains control and receives a tip on damage to particular parts. After the tip, a new section of the UI becomes available, showing damage to different parts of PED15. The player can then explore the town, albeit in a linear fashion.
+\subsubsection{Town Exploration}
+PED15 will be able to move into the town, searching different areas for parts or scrap. At the first scrap pile, the player will be given a tip on searching and how to inspect PED15's inventory. This area will be fairly brief, allowing the player to see if they can collect a ferw handy items.
+\subsubsection{Parts Vendor Encounter}
+A short distance into the town, PED15 will encounter a vending machine that provides like-for-like parts to different Automatons. This will be described to the player in a tip when they arrive. If the player has the right scrap or currency required by the vendor, they will be able to exchange their damaged part for a new one. If they did not collect the required parts in the last area, they have the ability to move back and try again.
+\subsubsection{Second Junker Encounter}
+Shortly after the vendor, PED15 will pass a street intersection. This will allow the player to see down the street to where a pair of Junkers are rifling through a junk pile. As PED15 crosses the intersection, they will notice it. One of the Junkers will have a handgun, which he will fire, hitting PED15 in the torso. This will knock PED15 down briefly and cause critical damage to its torso. This will be displayed in a tip to the player that also includes a countdown (5 minutes) to PED15's full shutdown. PED15 is now in a race against time to save itself somehow. After the shot, the Junkers will give chase to PED15. PED15 will need to move past the intersection to where the rest of the street to the right is blocked and the only escape is via a stairway up through a building.
+\subsubsection{Building Climb and Balcony Crossing}
+PED15 will climb the stairway up into a room of the building (a lounge room style), where there is clearly only one exit. This exit is off the balcony to the right, across a narrow plank of wood. PED15 must hurry to exit or the Junkers will catch up and destroy it. This part of the scene allows the player to see PED15 walking carefully and slowly across the narrow beam. After successfully traversing it, the beam will conveniently snap, preventing the Junkers from being able to get across. PED15 will arrive on another balcony to a building to the right. 
+\subsubsection{Upper Level Traversal}
+At the next building, PED15 will be able to look around the current floor and the floor above. Access to the right on the current floor will be blocked in the form of furniture and junk barring a doorway. There will be a staircase that can be used to get to the floor above. In a room on the floor above and to the right of the staircase is a large machine with two seating areas in it. It will be required to crawl under some furniture to get to this location.
+\subsubsection{Discovery of Automaton Transplant Unit (ATU)}
+The machine is an ATU. This device can be used to transplant the `consciousness' of one Automaton into another body if a body is available. This information will be provided to PED15 in the form of a tip. With the countdown still on, PED15 will need to find an Automaton to place in the ATU and transfer its consciousness across.
+\subsubsection{Non-operational Automaton Encounter}
+Through a doorway to the right of the machine and then down another staircase, the player will see a non-functioning Automaton, SEC17. In the remaining time available, PED15 will need to drag SEC17 to the ATU and activate it.
+\subsubsection{Automaton Transplant}
+In a short cutscene, both PED15 and SEC17 will be electrified to signify the transplant from one Automaton to another. The player will then gain control of SEC17. SEC17 is a different Automaton to PED15, has different parts damage, different movements and different aesthetics. The player will be given this information in a tip. It will be noted at this point that SEC17 is missing a forearm.
+\subsubsection{Operational Automaton Encounter}
+SEC17 is now free to move around the rest of the building. It will become apparent that there is an operational Automaton sitting in front of an otherwise possible exit to the building. If this Automaton is encountered as PED15, it will point out SEC17 to the player. If encountered as SEC17, this Automaton will ask for a trade. It will give SEC17 the required forearm if it can be given an operational set of legs. Any set of legs will do. SEC17 will then need to return to PED15 to harvest its legs. Upon returning to the sitting Automaton, the legs can be exchanged for the forearm. The Automaton will then stand, allowing SEC17 to exit the building.
+\subsubsection{Third Junker Encounter}
+Upon exiting the building, the other Automaton will follow SEC17. After a moment, a group of Junkers will appear from a sidestreet and attack the other Automaton, knocking it to the ground. This will give SEC17 a chance to escape by crawling under a nearby truck trailer and moving further to the right. If SEC17 does not escape in time, the Junkers will attack it.
+\subsubsection{Escape from Town}
+To escape from the Junkers further, SEC17 will need to push a small car out of the way and then jump across a gap in the pavement (from an earthquake or other such event). SEC17 will then need to enter a building and then exit it by climbing out a hole in the far wall. Once SEC17 exits the building, a cutscene will show the end of the game as SEC17 runs away from the town down the road.
+\subsection{Environments}
+\subsubsection{Description}
+All of the environments in the game will be designed in a low/medium-poly style, with more attention given to character models. As the versions of the game are developed (Alpha, Beta, Final), these environments will be fine-tuned and made more aesthetically appealing. The final game will have numerous objects that PED15 can interact with, as well as atmospheric effects such as foggy and lowlight sections of the game. Game environments will specifically include:
+\begin{itemize}
+	\item Roadside environment including bitumen, rocks and tall grass that moves with the wind. Mountains will be observable in the scene background.
+	\item Forest environment including tall trees, bushes, rocks, boulders, tall grass, rock wall background and the crane.
+	\item Town environment including multi-storey buildings (complete with broken and intact furniture), light posts, post boxes, bus stops, objects like loose garbage that can be interacted with, several vehicle types as well as busted and destroyed Automatons that can be cannibalised for parts.
+\end{itemize}
+Ojects in the final game will have a hand-painted semi-real style.
+\section{Characters}
+\subsection{Playable Character(s)}
+The playable character(s), although referred to as PED15 and SEC17 in other sections of this document, will be specific to each player. Each person that will play the game will have one character that is based on them personally, both statically and dynamically. The dynamic characteristics of each character will also be tied to a particular player in that each player will have motion capture recording taken of them doing various actions. These actions will then be animated on the associated character.
+\linebreak\linebreak
+Given the player will only have one character that is based on them, they will play the game as themself or as a character based on another player. The players of the game will be separated into two functional groups for testing. In the first group, PED15 will be based on the player. In the second group, SEC17 will be based on the player.
+\subsubsection{Static Characteristics}
+Each character in the game will be based on one of the players in the real world. Prior to the game build, this person will have numerous static measurements taken of them, including:
+\begin{itemize}
+	\item height to top of head,
+	\item height to shoulder,
+	\item height to waist,
+	\item length of arm from shoulder to fingertip,
+	\item chest circumference,
+	\item shoulder width,
+	\item upper arm circumference,
+	\item lower arm circumference,
+	\item waist circumference,
+	\item upper leg circumference,
+	\item lower leg circumference,
+	\item in-seam height,
+	\item length of foot.	
+\end{itemize}
+Some of these measurements could be considered invasive, so the players will be given the option of conducting their own measurements at home and providing the details to the developer. At a point before play, these may need to be checked or clarified.
+\linebreak\linebreak
+Aside from the static measurements, each character will be given a slightly different aesthetic appearance and an individual serial number. Aesthetic differences include metal colour, rust sections or small plates on limb or torso sections used only to provide personal differences.
+\subsubsection{Dynamic Characteristics}
+Each character will also have dynamic characteristics that will be tied to the player they were generated from. These will be specifically tied to the motion capture recordings of the player. Characteristics will include:
+\begin{itemize}
+	\item crawl (both crouched and prone), walk and run speed,
+	\item horizontal leap distance,
+	\item stair climbing speed,
+	\item speeds of various interactions including:
+	\begin{itemize}
+		\item opening a door,
+		\item picking up an object,
+		\item a rummaging/searching action,
+		\item climbing up a ledge.
+	\end{itemize}
+\end{itemize}
+These characteristics will determine whether or not a character can successfully complete a task (in time). Examples of this are:
+\begin{itemize}
+	\item timing a jump across a gap to ensure the character lands on the other side,
+	\item rummaging/searching for an object while in pursuit.
+\end{itemize}
+\subsubsection{Attributes}
+The player will be able to see the damage amount on all of PED15's parts in the UI. Other attributes that PED15 has are:
+\begin{itemize}
+	\item speed,
+	\item horizontal leap distance,
+	\item inventory (and inventory space).
+\end{itemize}
+\subsubsection{Visual Concept}
+PED15 is a humanoid Automaton and looks as such. Concept art is in Figures 1 through 4.
+	\begin{figure}[h]
+		\hfill\includegraphics[width=.46\textwidth]{HK47.JPG}\hspace*{\fill}
+		\caption{HK-47 models from Star Wars: Knights of the Old Republic.}
+	\end{figure}
+	\begin{figure}[h]
+		\hfill\includegraphics[width=.46\textwidth]{multiple.JPG}\hspace*{\fill}
+		\caption{Various concept designs from the Wall-E movie.}
+	\end{figure}
+	\begin{figure}[h]
+		\hfill\includegraphics[width=.46\textwidth]{RobotFull.JPG}\hspace*{\fill}
+		\caption{Robot Kyle Blender demo model.}
+	\end{figure}
+	\begin{figure}[h]
+		\hfill\includegraphics[width=.46\textwidth]{RobotHead.JPG}\hspace*{\fill}
+		\caption{C-3PO style concept art.}
+	\end{figure}
+\subsection{NPCs}
+\subsubsection{Other Automatons (Neutral)}
+All Automatons look more or less the same. The other Automatons in the game are non-hostile towards PED15. In fact, there are some Automatons in the game that will be in positions that PED15 will not be able to access (floors above or below or in the background of the limited area). These Automatons may stop what they were previously doing and look at PED15, but will otherwise be unperturbed. PED15 will encounter some other Automatons and be required to interact with these to progress. The encounter that details the exchange of limbs is one such encounter.
+\subsubsection{Junkers (Hostile)}
+The Junkers are all hostile towards PED15 and will seek to attack and subdue it on sight. They look like humans in nondescript clothing, but with gas masks on their faces. For this reason, all Junkers look alike and there is no clear distinction possible between them. If Junkers see PED15, they will rush to attack. Generally, the Junkers will give PED15 a chance to rise before attacking again, which allows PED15 a chance to escape once. If PED15 doesn't escape immediately, the Junkers are likely to swarm and destroy it. Concept art for the Junkers is in Figures 5 though 7.
+	\begin{figure}[h]
+		\hfill\includegraphics[width=.37\textwidth]{Madmax1.JPG}\hspace*{\fill}
+		\caption{Mad Max game concept art.}
+	\end{figure}
+	\begin{figure}[h]
+		\hfill\includegraphics[width=.46\textwidth]{Gasmask1.JPG}\hspace*{\fill}
+		\caption{Gas mask style.}
+	\end{figure}
+	\begin{figure}[h]
+		\hfill\includegraphics[width=.46\textwidth]{PAart.JPG}\hspace*{\fill}
+		\caption{Post-apocalyptic character concept art.}
+	\end{figure}
+\section{Damage System}
+As has been mentioned, PED15 has a damage system that records damage to all body parts. Functionally, this will have no effect on gameplay except for the torso damage counter that forces PED15 to transplant into SEC17. In the section where SEC17 has no forearm, there will be nothing that requires the use of that forearm that will break the illusion of the game.
+\linebreak\linebreak
+With respect to the interactions with the Junkers, if the Junkers get to PED15, they will knock it to the ground and that will constitute `death'. There will be no second chances or ability to receive damage from the Junkers (with the exception of the bullet).
+\subsection{Game Controller Diagram}
+A diagram of the game controller and button layout is at Figure 8.
+	\begin{figure}[h]
+		\hfill\includegraphics[width=.46\textwidth]{CDLayout.JPG}\hspace*{\fill}
+		\caption{Game controller button layout.}
+	\end{figure}
+\end{document}
